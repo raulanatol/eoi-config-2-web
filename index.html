@@ -1,6 +1,17 @@
 <script type="text/javascript">
+  function renderUsers(users) {
+    const userList = document.getElementById('users');
+    users.forEach(user => {
+      const userLi = document.createElement('li');
+      userLi.innerHTML = user.name;
+      userList.appendChild(userLi);
+    });
+  }
+
   function getUsers() {
-    console.log('Load users from API server');
+    fetch('http://localhost:3000/users')
+        .then(response => response.json())
+        .then(renderUsers);
   }
 </script>
 
@@ -8,7 +19,5 @@
 
 
 <h2>Users</h2>
-<ul>
-
-</ul>
+<ul id="users"></ul>
 <button onclick="getUsers()">Load users</button>
