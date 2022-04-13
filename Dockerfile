@@ -1,6 +1,6 @@
 FROM nginx:alpine
 
-RUN apk update && apk install -y vim
+RUN apk update && apk add vim
 
 EXPOSE 80
 
